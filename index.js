@@ -4,7 +4,7 @@ const port =3000;
 const hostname ="localhost";
 
 http.createServer((req,res) =>{
-    sServer.initStaticServer(req,res);
+    sServer(req,res);
 }).listen(port,hostname,()=>{
     console.log(port+'端口已启动,正在运行中...');
 });

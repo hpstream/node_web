@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const suffix = require('./suffix.json');
 
-exports.initStaticServer = (req,res)=>{
+module.exports = (req,res)=>{
     //获取url地址
     //url返回对象
     //{
@@ -40,10 +40,9 @@ exports.initStaticServer = (req,res)=>{
                 });
               if(url.ext == '.html'){
                 //如果是html页面没有找到，就返回404.html页面
-                   fs.readFile(path.join(__dirname,'./404.html'),(err,data) =>{
-                        res.write(data);
-                        res.end();
-                    })
+              // console.log(path.join(__dirname,'404.html'));
+                    res.writeHead(301, {'Location': 'http://localhost:3000/404.html'});
+                    res.end();
               }else{
                     res.end();
               }
